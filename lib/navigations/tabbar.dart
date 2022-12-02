@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:spotify_clone/views/home.dart';
-import 'package:spotify_clone/views/library.dart';
-import 'package:spotify_clone/views/premium.dart';
-import 'package:spotify_clone/views/search.dart';
+import 'package:spotify_clone/views/home_view/home.dart';
+import 'package:spotify_clone/views/library_view/library.dart';
+import 'package:spotify_clone/views/premium_view/premium.dart';
+
+import '../views/search_view/search.dart';
 
 class Tabbar extends StatefulWidget{
   @override

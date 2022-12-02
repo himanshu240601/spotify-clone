@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_clone/models/MostPlayedModel.dart';
-import '../models/PopularAlbumsModel.dart';
+import 'package:spotify_clone/views/home_view/widgets/best_of_artists.dart';
+import 'package:spotify_clone/views/home_view/widgets/most_played.dart';
+import 'package:spotify_clone/views/home_view/widgets/recently_played.dart';
+import 'package:spotify_clone/views/home_view/widgets/recommended_for_today.dart';
+import 'models/MostPlayedModel.dart';
+import 'models/PopularAlbumsModel.dart';
 
-List<MostPlayedModel> most_played_model = [
+List<MostPlayedModel> mostPlayed = [
   MostPlayedModel('Vikram (Original Background Score)', 'https://i.scdn.co/image/ab67616d0000b273b0fe43ced529df9e3892ddc5'),
   MostPlayedModel('Hot Hits Punjabi', 'https://i.scdn.co/image/ab67706f0000000379f1bcb733388f2d7c0acb03'),
   MostPlayedModel('Top Gun: Maverick (Music From The Motion Picture)', 'https://i.scdn.co/image/ab67706c0000bebbaa153ed119d5bd0510fe6d21'),
@@ -11,7 +15,7 @@ List<MostPlayedModel> most_played_model = [
   MostPlayedModel('Vikram (Original Motion Picture Soundtrack', 'https://i.scdn.co/image/ab67616d00001e0239fe640ab73db368eeac0f90'),
 ];
 
-List<MostPlayedModel> recent_played_model = [
+List<MostPlayedModel> recentPlayed = [
   MostPlayedModel('Top Gun: Maverick (Music From The Motion Picture', 'https://i.scdn.co/image/ab67706c0000bebbaa153ed119d5bd0510fe6d21'),
   MostPlayedModel('Hot Hits Punjabi', 'https://i.scdn.co/image/ab67706f0000000379f1bcb733388f2d7c0acb03'),
   MostPlayedModel('Despicable Me 2 (Original Motion Picture Soundtrack)', 'https://i.scdn.co/image/ab67616d0000b2737d15f4754a70b55dac6cd56e'),
@@ -19,7 +23,7 @@ List<MostPlayedModel> recent_played_model = [
   MostPlayedModel('Despicable Me 3 (Original Motion Picture Soundtrack)', 'https://i.scdn.co/image/ab67616d0000b273b4910b03d64de42d39df86e8'),
 ];
 
-List<MostPlayedModel> artist_playlist_model = [
+List<MostPlayedModel> artistPlaylist = [
   MostPlayedModel('This is Charlie Puth. The essential tracks, all in one playlist.', 'https://i.scdn.co/image/ab67706f0000000323c3e7d49298b5e0f1bbf69f'),
   MostPlayedModel("Punjabi superstar's biggest hits.", 'https://i.scdn.co/image/ab67706f000000037954230cfbffff483cc4380f'),
   MostPlayedModel('The essential tracks, all in one playlist.', 'https://i.scdn.co/image/ab67706f000000037a5e5d49a4abbad5ad50c3b0'),
@@ -27,7 +31,7 @@ List<MostPlayedModel> artist_playlist_model = [
   MostPlayedModel("Listen to Selena's latest releases, plus all her essential hits.", 'https://i.scdn.co/image/ab67706f000000037cda1a881997b0bb1ca0eb92'),
 ];
 
-List<PopularAlbumsModel> popular_albums_model = [
+List<PopularAlbumsModel> popularAlbums = [
   PopularAlbumsModel('Kesariya (From "Brahmastra")', 'Single • Pritam, Arijit Singh, Amitabh Bhattacharya', 'https://i.scdn.co/image/ab67616d0000b273c08202c50371e234d20caf62'),
   PopularAlbumsModel('Excuses', 'Single • AP Dhillon', 'https://i.scdn.co/image/ab67616d0000b2738c02ba41ac469500b7385b4d'),
   PopularAlbumsModel("I Ain't Worried", 'Single • One Republic', 'https://i.scdn.co/image/ab67616d0000b273ec96e006b8bdfc582610ec13'),
@@ -36,6 +40,8 @@ List<PopularAlbumsModel> popular_albums_model = [
 ];
 
 class HomePage extends StatefulWidget{
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -62,7 +68,7 @@ class _HomePageState extends State<HomePage>{
                 height: 24,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -83,34 +89,16 @@ class _HomePageState extends State<HomePage>{
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Row(
+                    for(var i=0;i<mostPlayed.length;i+=2)Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        MostPlayed(index: 0),
-                        SizedBox(width: 10,),
-                        MostPlayed(index: 1)
-                      ],
-                    ),
-                    const SizedBox(height: 10,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        MostPlayed(index: 2),
-                        SizedBox(width: 10,),
-                        MostPlayed(index: 3)
-                      ],
-                    ),
-                    const SizedBox(height: 10,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        MostPlayed(index: 4),
-                        SizedBox(width: 10,),
-                        MostPlayed(index: 5)
+                      children: [
+                        MostPlayed(index: i),
+                        const SizedBox(width: 10,),
+                        MostPlayed(index: i+1)
                       ],
                     ),
                   ],
@@ -142,7 +130,7 @@ class _HomePageState extends State<HomePage>{
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for(var i=0;i<5;i++) PopularAlbums(index: i,)
+                    for(var i=0;i<5;i++) RecommendedForToday(index: i,)
                    ],
                 ),
               ),
@@ -157,7 +145,7 @@ class _HomePageState extends State<HomePage>{
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    for(var i=0;i<5;i++) ArtistAlbums(index: i,)
+                    for(var i=0;i<5;i++) BestOfArtists(index: i,)
                   ],
                 ),
               )
@@ -165,142 +153,6 @@ class _HomePageState extends State<HomePage>{
           ),
         ),
       )
-    );
-  }
-}
-
-class RecentlyPlayed extends StatelessWidget{
-  const RecentlyPlayed({Key? key, required this.index}) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: (recent_played_model.length-1==index) ? const EdgeInsets.only(right: 0) : const EdgeInsets.only(right: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(recent_played_model[index].image,
-            width: 125, height: 125,),
-          const SizedBox(height: 10,),
-          SizedBox(
-              width: 125,
-              child: Text(
-                recent_played_model[index].title, style: Theme.of(context).textTheme.titleSmall,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              )
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class MostPlayed extends StatelessWidget{
-  const MostPlayed({Key? key, required this.index}) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: Container(
-        decoration: BoxDecoration(
-            color: Colors.white12,
-            borderRadius: BorderRadius.circular(8)
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: Row(
-          children: [
-            Image.network(most_played_model[index].image, height: 54, width: 54, fit: BoxFit.cover,),
-            const SizedBox(width: 8,),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 8),
-                child: Text(
-                  most_played_model[index].title,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500
-                  )
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ArtistAlbums extends StatelessWidget{
-  const ArtistAlbums({Key? key, required this.index}) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: (artist_playlist_model.length-1==index) ? const EdgeInsets.only(right: 0) : const EdgeInsets.only(right: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(artist_playlist_model[index].image,
-            width: 150, height: 150,),
-          const SizedBox(height: 10,),
-          SizedBox(
-              width: 150,
-              child: Text(
-                artist_playlist_model[index].title, style: Theme.of(context).textTheme.caption,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              )
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PopularAlbums extends StatelessWidget{
-  const PopularAlbums({Key? key, required this.index}) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: (popular_albums_model.length-1==index) ? const EdgeInsets.only(right: 0) : const EdgeInsets.only(right: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(popular_albums_model[index].image,
-            width: 150, height: 150,),
-          const SizedBox(height: 10,),
-          SizedBox(
-            width: 150,
-              child: Text(
-                popular_albums_model[index].title, style: Theme.of(context).textTheme.titleSmall,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              )
-          ),
-          const SizedBox(height: 4,),
-          SizedBox(
-            width: 150,
-              child: Text(
-                popular_albums_model[index].caption, style: Theme.of(context).textTheme.caption,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              )
-          )
-        ],
-      ),
     );
   }
 }
