@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:spotify_clone/views/album_view/widgets/sliver_delegate.dart';
 
+import '../home_view/models/PopularAlbumsModel.dart';
+
+List<PopularAlbumsModel> albumSongs = [
+  PopularAlbumsModel("Destination", "Crash Adams", 'https://i.scdn.co/image/ab67616d0000b273a800a049d4a54c6fd3a328f9'),
+  PopularAlbumsModel("I Ain't Worried", "One Republic", 'https://i.scdn.co/image/ab67616d0000b2730884a5ab3882152b208f506c'),
+  PopularAlbumsModel("Anti-Hero", "Taylor Swift", "https://i.scdn.co/image/ab67616d0000b273bb54dde68cd23e2a268ae0f5"),
+];
 
 class AlbumPage extends StatefulWidget {
   const AlbumPage({Key? key}) : super(key: key);
@@ -25,7 +32,7 @@ class _AlbumPageState extends State<AlbumPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  for(var i=0;i<10;i++) Container(
+                  for(var i=0;i<albumSongs.length;i++) Container(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -33,16 +40,16 @@ class _AlbumPageState extends State<AlbumPage> {
                       children: [
                         Row(
                           children: [
-                            Image.network('https://i.scdn.co/image/ab67616d0000b273d304ba2d71de306812eebaf4', width: 54,),
+                            Image.network(albumSongs[i].image, width: 54,),
                             const SizedBox(width: 12,),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text("Night Changes", style: TextStyle(
+                                Text(albumSongs[i].title, style: const TextStyle(
                                   fontSize: 16
                                 )),
                                 const SizedBox(height: 4,),
-                                Text("One Direction", style: TextStyle(
+                                Text(albumSongs[i].caption, style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.white.withOpacity(.7)
                                 ))

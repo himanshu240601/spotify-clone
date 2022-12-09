@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_clone/views/album_view/album_view.dart';
 
 class SliverAlbumDelegate extends SliverPersistentHeaderDelegate {
   final double expandedHeight;
@@ -24,19 +25,21 @@ class SliverAlbumDelegate extends SliverPersistentHeaderDelegate {
     return SafeArea(
       child: Stack(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xff5858c4),
-                Color(0xff5858c4),
-                Color(0xbf5858c4),
-                Color(0x005858c4),
-                Color(0x005858c4),
-              ],
-            )),
+          ShaderMask(
+            shaderCallback: (rect) {
+              return const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.white, Colors.transparent],
+              ).createShader(Rect.fromLTRB(0, 0, rect.width, rect.height));
+            },
+            blendMode: BlendMode.dstIn,
+            child: Image.network(
+              'https://i.scdn.co/image/ab6761610000e5eb304b71d0a10604ec0cf314c6',
+              fit: BoxFit.cover,
+              width: MediaQuery.of(context).size.width,
+              height: expandedHeight,
+            ),
           ),
           Positioned(
             bottom: 64,
@@ -53,7 +56,7 @@ class SliverAlbumDelegate extends SliverPersistentHeaderDelegate {
                     height: 8,
                   ),
                   Text(
-                    "10 songs",
+                    "${albumSongs.length} Songs",
                     style: TextStyle(color: Colors.white.withOpacity(.7)),
                   ),
                 ],
@@ -65,7 +68,7 @@ class SliverAlbumDelegate extends SliverPersistentHeaderDelegate {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
-                  color: Color(0xff5858c4)
+                  color: Color(0x005858c4)
                 ),
                 child: Align(
                   alignment: Alignment.topLeft,
