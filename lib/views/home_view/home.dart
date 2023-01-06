@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_clone/views/home_view/inner_pages/history/history.dart';
+import 'package:spotify_clone/views/home_view/inner_pages/notifications/notifications.dart';
+import 'package:spotify_clone/views/home_view/inner_pages/settings/settings.dart';
 import 'package:spotify_clone/views/home_view/widgets/best_of_artists.dart';
 import 'package:spotify_clone/views/home_view/widgets/most_played.dart';
 import 'package:spotify_clone/views/home_view/widgets/recently_played.dart';
@@ -32,7 +35,7 @@ List<MostPlayedModel> artistPlaylist = [
 ];
 
 List<PopularAlbumsModel> popularAlbums = [
-  PopularAlbumsModel('Kesariya (From "Brahmastra")', 'Single • Pritam, Arijit Singh, Amitabh Bhattacharya', 'https://i.scdn.co/image/ab67616d0000b273c08202c50371e234d20caf62'),
+  PopularAlbumsModel('Bones', 'Single • Imagine Dragons', 'https://upload.wikimedia.org/wikipedia/en/b/bb/Imagine_Dragons_Bones_cover.jpg'),
   PopularAlbumsModel('Excuses', 'Single • AP Dhillon', 'https://i.scdn.co/image/ab67616d0000b2738c02ba41ac469500b7385b4d'),
   PopularAlbumsModel("I Ain't Worried", 'Single • One Republic', 'https://i.scdn.co/image/ab67616d0000b273ec96e006b8bdfc582610ec13'),
   PopularAlbumsModel('We Rollin', 'Single • Shubh', 'https://i.scdn.co/image/ab67616d0000b273baf6c6478977c551c6f3cd0e'),
@@ -77,12 +80,39 @@ class _HomePageState extends State<HomePage>{
                       style: Theme.of(context).textTheme.headline6,
                     ),
                     Row(
-                      children: const [
-                        Icon(Icons.notifications_none_rounded),
-                        SizedBox(width: 20,),
-                        Icon(Icons.history_rounded),
-                        SizedBox(width: 20,),
-                        Icon(Icons.settings_outlined),
+                      children: [
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const NotificationPage()
+                                ),
+                              );
+                            },
+                            child: const Icon(Icons.notifications_none_rounded)
+                        ),
+                        const SizedBox(width: 20,),
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const HistoryPage()
+                                ),
+                              );
+                            },
+                            child: const Icon(Icons.history_rounded)
+                        ),
+                        const SizedBox(width: 20,),
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const SettingsPage()
+                                ),
+                              );
+                            },
+                            child: const Icon(Icons.settings_outlined)
+                        ),
                       ],
                     ),
                   ],

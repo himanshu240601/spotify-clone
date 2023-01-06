@@ -6,13 +6,16 @@ class SliverAlbumDelegate extends SliverPersistentHeaderDelegate {
   final double roundedContainerHeight;
 
   SliverAlbumDelegate(
-      {required this.expandedHeight, required this.roundedContainerHeight});
+      {required this.expandedHeight, required this.roundedContainerHeight, required this.image, required this.title});
 
   @override
   double get maxExtent => expandedHeight;
 
   @override
   double get minExtent => 120;
+
+  final String image;
+  final String title;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
@@ -35,7 +38,7 @@ class SliverAlbumDelegate extends SliverPersistentHeaderDelegate {
             },
             blendMode: BlendMode.dstIn,
             child: Image.network(
-              'https://i.scdn.co/image/ab6761610000e5eb304b71d0a10604ec0cf314c6',
+              image,
               fit: BoxFit.cover,
               width: MediaQuery.of(context).size.width,
               height: expandedHeight,
@@ -48,9 +51,17 @@ class SliverAlbumDelegate extends SliverPersistentHeaderDelegate {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Liked Songs",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width*.9,
+                    child: Text(
+                      title,
+                      overflow: TextOverflow.fade,
+                      softWrap: false,
+                      style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   const SizedBox(
                     height: 8,

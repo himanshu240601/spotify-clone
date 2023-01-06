@@ -102,7 +102,11 @@ class _LibraryPageState extends State<LibraryPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AlbumPage()),
+                          builder: (context) => const AlbumPage(
+                              s: 'https://i1.sndcdn.com/artworks-y6qitUuZoS6y8LQo-5s2pPA-t500x500.jpg',
+                              title: "Liked Songs"
+                          )
+                      ),
                     );
                   },
                   child: Container(
@@ -138,7 +142,7 @@ class _LibraryPageState extends State<LibraryPage> {
                                 const SizedBox(
                                   width: 4,
                                 ),
-                                Text("Playlist • 7 songs",
+                                Text("Playlist • 3 songs",
                                     style: Theme.of(context).textTheme.caption)
                               ],
                             ),

@@ -18,7 +18,11 @@ class BestOfArtists extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const AlbumPage()),
+            MaterialPageRoute(builder: (context) => AlbumPage(
+                s: artistPlaylist[index].image,
+              title: artistPlaylist[index].title,
+            )
+            ),
           );
         },
         child: Column(

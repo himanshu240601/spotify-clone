@@ -17,7 +17,7 @@ class RecommendedForToday extends StatelessWidget{
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const AlbumPage()),
+                builder: (context) => AlbumPage(s: popularAlbums[index].image,title: popularAlbums[index].title,)),
           );
         },
         child: Column(

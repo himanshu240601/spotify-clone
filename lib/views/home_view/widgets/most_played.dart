@@ -17,7 +17,7 @@ class MostPlayed extends StatelessWidget{
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const AlbumPage()),
+                builder: (context) => AlbumPage(s: mostPlayed[index].image, title: mostPlayed[index].title,)),
           );
         },
         child: Container(

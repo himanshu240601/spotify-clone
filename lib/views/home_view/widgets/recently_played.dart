@@ -17,7 +17,7 @@ class RecentlyPlayed extends StatelessWidget{
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => const AlbumPage()),
+                builder: (context) => AlbumPage(s: recentPlayed[index].image,title: recentPlayed[index].title,)),
           );
         },
         child: Column(

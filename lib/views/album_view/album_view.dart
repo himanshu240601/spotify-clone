@@ -9,14 +9,12 @@ List<PopularAlbumsModel> albumSongs = [
   PopularAlbumsModel("Anti-Hero", "Taylor Swift", "https://i.scdn.co/image/ab67616d0000b273bb54dde68cd23e2a268ae0f5"),
 ];
 
-class AlbumPage extends StatefulWidget {
-  const AlbumPage({Key? key}) : super(key: key);
+class AlbumPage extends StatelessWidget {
+  const AlbumPage({Key? key, required this.s, required this.title}) : super(key: key);
 
-  @override
-  State<AlbumPage> createState() => _AlbumPageState();
-}
+  final String s;
+  final String title;
 
-class _AlbumPageState extends State<AlbumPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +23,7 @@ class _AlbumPageState extends State<AlbumPage> {
           SliverPersistentHeader(
             pinned: true,
               delegate: SliverAlbumDelegate(
-                  expandedHeight: 340, roundedContainerHeight: 10)),
+                  expandedHeight: 340, roundedContainerHeight: 10, image: s, title: title)),
           SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.all(16),
@@ -59,7 +57,9 @@ class _AlbumPageState extends State<AlbumPage> {
                         ),
                         Row(
                           children: [
-                            const Icon(Icons.favorite, color: Color(0xff00ff00), size: 20,),
+                            (title=="Liked Songs")
+                                ? const Icon(Icons.favorite, color: Color(0xff00ff00), size: 20,)
+                                : const Icon(Icons.favorite_outline, size: 20,),
                             const SizedBox(width: 20,),
                             Icon(Icons.more_vert_outlined, color: Colors.white.withOpacity(.7),)
                           ],
