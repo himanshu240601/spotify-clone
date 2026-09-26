@@ -1,16 +1,60 @@
-# spotify_clone
+# Spotify UI Clone
 
-A new Flutter project.
+A Flutter-based mobile UI project inspired by the Spotify application.
 
-## Getting Started
+This project was created as an early Flutter learning exercise to practice building mobile interfaces, working with layouts, reusable widgets, assets, and navigation.
 
-This project is a starting point for a Flutter application.
+> **Project Note**
+>
+> This is an older learning project and is preserved as part of my mobile development journey.
+>
+> It is an unofficial UI recreation created for educational purposes and is not affiliated with Spotify.
 
-A few resources to get you started if this is your first Flutter project:
+## About
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The project recreates parts of the Spotify-style mobile experience using Flutter and Dart.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The main goal was to practice translating an existing product interface into a working mobile application while improving my understanding of Flutter UI development.
+
+## Tech Stack
+
+- Flutter
+- Dart
+- Material Design
+- Android
+- iOS
+
+## Project Structure
+
+```text
+spotify-clone/
+│
+├── android/
+├── ios/
+├── lib/
+├── test/
+├── pubspec.yaml
+└── README.md
+```
+
+## Running the Project
+
+Make sure Flutter is installed on your machine.
+
+Clone the repository:
+
+```bash
+git clone https://github.com/himanshu240601/spotify-clone.git
+cd spotify-clone
+```
+
+Install dependencies:
+
+```bash
+flutter pub get
+```
+
+Run the application:
+
+```bash
+flutter run
