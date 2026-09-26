@@ -58,3 +58,46 @@ Run the application:
 
 ```bash
 flutter run
+```
+
+## What I Practiced
+
+This project helped me practice:
+
+- Building mobile interfaces with Flutter
+- Working with Dart
+- Creating reusable UI components
+- Managing application assets
+- Structuring Flutter screens
+- Working with responsive layouts
+- Understanding Flutter project structure
+- Running a shared codebase on Android and iOS
+
+## Limitations
+
+This project focuses primarily on the UI experience.
+
+Depending on the current implementation, features such as the following may not be connected to production services:
+
+- Spotify authentication
+- Real music streaming
+- Spotify Web API integration
+- User playlists
+- Playback synchronization
+- Backend services
+
+## Disclaimer
+
+Spotify and its branding are trademarks of Spotify AB.
+
+This repository is an independent educational project created for learning purposes only and is not endorsed by or affiliated with Spotify.
+
+## Author
+
+**Himanshu Goyal**
+
+GitHub: [@himanshu240601](https://github.com/himanshu240601)
+
+## License
+
+No open-source license is currently specified for this repository.
